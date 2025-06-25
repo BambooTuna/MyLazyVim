@@ -127,6 +127,7 @@ return {
         "lua",
         "markdown",
         "markdown_inline",
+        "prisma",
         "python",
         "query",
         "regex",

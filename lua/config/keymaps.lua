@@ -32,10 +32,10 @@ vim.keymap.set("i", "<Up>", "<Nop>", { desc = "Disable up arrow" })
 vim.keymap.set("i", "<Right>", "<Nop>", { desc = "Disable right arrow" })
 
 -- Ctrl + hjkl で移動
--- vim.keymap.set("i", "<C-h>", "<Left>", { desc = "Move left" })
--- vim.keymap.set("i", "<C-j>", "<Down>", { desc = "Move down" })
--- vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Move up" })
--- vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Move right" })
+vim.keymap.set("i", "<C-h>", "<Left>", { desc = "Move left" })
+vim.keymap.set("i", "<C-j>", "<Down>", { desc = "Move down" })
+vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Move up" })
+vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Move right" })
 
 -- エディター
 vim.keymap.set("i", "<C-v>", "<C-r>+", { desc = "Paste from clipboard" })
@@ -46,6 +46,10 @@ vim.keymap.set("n", "<Left>", "<Nop>", { desc = "Disable left arrow" })
 vim.keymap.set("n", "<Down>", "<Nop>", { desc = "Disable down arrow" })
 vim.keymap.set("n", "<Up>", "<Nop>", { desc = "Disable up arrow" })
 vim.keymap.set("n", "<Right>", "<Nop>", { desc = "Disable right arrow" })
+
+-- クイック移動
+vim.keymap.set("n", "<S-h>", "0", { desc = "Cursor to start" })
+vim.keymap.set("n", "<S-l>", "$", { desc = "Cursor to end" })
 
 -- バッファー切り替え
 vim.keymap.set("n", "<A-h>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
@@ -60,3 +64,6 @@ vim.keymap.set("n", "s", '"_s', { desc = "Substitute without yanking" })
 
 -- 単語選択
 vim.keymap.set("n", "<S-j>", "viw", { desc = "Word selection" })
+
+-- バッファー削除
+vim.keymap.set("n", "<leader>dd", "<cmd>bdelete<cr>", { desc = "Delete buffer" })

@@ -1,7 +1,14 @@
 return {
   "coder/claudecode.nvim",
   dependencies = { "folke/snacks.nvim" },
-  config = true,
+  opts = {
+    input = {
+      keys = {
+        ["<S-CR>"] = "newline",
+        ["<CR>"] = "send",
+      },
+    },
+  },
   keys = {
     { "<leader>a", nil, desc = "AI/Claude Code" },
     { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
