@@ -16,6 +16,9 @@ return {
         local buf_name = vim.api.nvim_buf_get_name(event.buf)
         -- lazygitバッファかどうかを確認
         if string.match(buf_name, "lazygit") then
+          -- 元のtimeoutlenを保存
+          local original_timeoutlen = vim.o.timeoutlen
+          
           -- lazygitのターミナルでtimeoutlenを短縮してjキーの反応を改善
           vim.opt_local.timeoutlen = 100
           -- さらに、jjキーマップを無効化してjキーの応答を即座にする
@@ -23,6 +26,15 @@ return {
           -- lazygitのタブ移動をAlt+h/lで行う
           vim.keymap.set("t", "<A-h>", "[", { buffer = event.buf, silent = true })
           vim.keymap.set("t", "<A-l>", "]", { buffer = event.buf, silent = true })
+          
+          -- lazygitターミナルが閉じられたときにtimeoutlenを元に戻す
+          vim.api.nvim_create_autocmd("BufWinLeave", {
+            buffer = event.buf,
+            callback = function()
+              vim.o.timeoutlen = original_timeoutlen
+            end,
+            once = true,
+          })
         end
       end,
     })
